@@ -1,0 +1,12 @@
+{
+    "name": "app_name",
+    "author": "Arber Mustafa",
+    "version": "1.0.0",
+    "description": "App description",
+    "keyword": ["keyword"],
+    "license": "MIT",
+    "require": {
+        "slim/slim": "2.*",
+        "entomb/slim-json-api": "dev-master"
+    }
+}

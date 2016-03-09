@@ -1,0 +1,46 @@
+app:
+    image: php:7.0-fpm
+    volumes:
+        - ./src:/var/www/html
+    command: "true"
+
+data:
+    image: mysql:latest
+    volumes:
+        - /var/lib/mysql
+    command: "true"
+
+nginx:
+    build: ./docker/nginx/
+    ports:
+        - 80:80
+    links:
+        - php
+    volumes_from:
+        - app
+
+php:
+    build: ./docker/php/
+    expose:
+        - 9000
+    links:
+        - mysql
+    volumes_from:
+        - app
+
+composer:
+    image: composer/composer
+
+mysql:
+    build: ./docker/mysql/
+    volumes_from:
+        - data
+
+phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+        - 8080:80
+    links:
+        - mysql
+    environment:
+        PMA_HOST: mysql
