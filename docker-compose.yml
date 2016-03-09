@@ -12,8 +12,10 @@ data:
 
 nginx:
     build: ./docker/nginx/
+    environment:
+        - 'VIRTUAL_HOST=http://domain.local'  
     ports:
-        - 80:80
+        - 80
     links:
         - php
     volumes_from:
@@ -27,6 +29,20 @@ php:
         - mysql
     volumes_from:
         - app
+        
+router:
+    image: 'tutum/haproxy:latest'
+    deployment_strategy: every_node
+    environment:
+        - 'BACKEND_PORTS=80'
+    links:
+        - nginx
+    ports:
+        - '80:80'
+    privileged: true
+    restart: always
+    roles:
+        - global
 
 composer:
     image: composer/composer
