@@ -36,7 +36,7 @@ router:
     environment:
         - BACKEND_PORT=80
     links:
-        - nginx:nginx
+        - nginx
     ports:
         - 80:80
     privileged: true
