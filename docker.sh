@@ -5,7 +5,7 @@ DCK="docker"
 DCKCMP="docker-compose"
 ECHO_CMD="echo -e "
 COMPOSER_SRC="$(pwd)/src"
-COMPOSER_DST="/var/www/html"
+COMPOSER_DST="/path/to/document/root/on/container"
 
 case "$1" in
 
