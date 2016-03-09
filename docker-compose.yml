@@ -1,7 +1,7 @@
 app:
     image: php:7.0-fpm
     volumes:
-        - ./src:/var/www/html
+        - ./src:/path/to/document/root/on/container
     command: "true"
 
 data:
