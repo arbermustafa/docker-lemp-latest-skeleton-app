@@ -34,11 +34,11 @@ case "$1" in
         ;;
 
     "rm_images")
-        $DCK rmi $($DCK images -f "dangling=true" -q)
+        $DCK rmi $($DCK images -q -f dangling=true)
         ;;
         
     "rm_volumes")
-        $DCK volume rm $($DCK volume ls -qf dangling=true)
+        $DCK volume rm $($DCK volume ls -q -f dangling=true)
         ;;
 
     "rm_all")
