@@ -30,16 +30,21 @@ case "$1" in
         ;;
 
     "rm_containers")
-        $DCK rm -v $($DCK ps -a -q)
+        $DCK rm -v $($DCK ps -a -q -f status=exited)
         ;;
 
     "rm_images")
-        $DCK rmi $($DCK images -q)
+        $DCK rmi $($DCK images -f "dangling=true" -q)
+        ;;
+        
+    "rm_volumes")
+        $DCK volume rm $($DCK volume ls -qf dangling=true)
         ;;
 
     "rm_all")
         $0 rm_containers
         $0 rm_images
+        $0 rm_volumes
         ;;
 
 esac
