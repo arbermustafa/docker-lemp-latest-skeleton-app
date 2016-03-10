@@ -32,7 +32,6 @@ php:
         
 router:
     image: tutum/haproxy:latest
-    deployment_strategy: every_node
     environment:
         - BACKEND_PORT=80
     links:
@@ -41,8 +40,6 @@ router:
         - 80:80
     privileged: true
     restart: always
-    roles:
-        - global
 
 composer:
     image: composer/composer
