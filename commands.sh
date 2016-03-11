@@ -4,6 +4,7 @@
 DCK="docker"
 DCKCMP="docker-compose"
 ECHO_CMD="echo -e "
+GIT="git"
 COMPOSER_SRC="$(pwd)/src"
 COMPOSER_DST="/path/to/document/root/on/container"
 
@@ -27,6 +28,10 @@ case "$1" in
 
     "composer")
         $DCK run --rm -u $UID -v $COMPOSER_SRC:$COMPOSER_DST -w $COMPOSER_DST composer/composer $2
+        ;;
+        
+    "clone_repo")
+        $GIT clone $2 $COMPOSER_SRC && rm -rf $COMPOSER_SRC/.git*
         ;;
 
     "rm_containers")
