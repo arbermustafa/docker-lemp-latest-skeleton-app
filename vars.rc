@@ -1,0 +1,8 @@
+# Configuration Variables
+
+DCK="docker"
+DCKCMP="docker-compose"
+ECHO_CMD="echo -e "
+GIT="git"
+COMPOSER_SRC="$(pwd)/src"
+COMPOSER_DST="/path/to/document/root/on/container"
