@@ -1,12 +1,12 @@
 #!/bin/bash
 # Bash script for common docker commands
 
-if [ -f vars.rc ];then
-    . vars.rc
-else
-    echo "vars.rc doesn't exist!"
-    exit 1;
-fi
+DCK="docker"
+DCKCMP="docker-compose"
+ECHO_CMD="echo -e "
+GIT="git"
+COMPOSER_SRC="$(pwd)/src"
+COMPOSER_DST="/path/to/document/root/on/container"
 
 case "$1" in
 
